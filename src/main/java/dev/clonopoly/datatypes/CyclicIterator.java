@@ -29,7 +29,7 @@ public class CyclicIterator<T> implements Iterator<T> {
         return item;
     }
 
-    public List<T> getAllItems() {
+    public List<T> toList() {
         return list;
     }
 }
