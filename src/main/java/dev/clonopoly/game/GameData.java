@@ -28,4 +28,8 @@ public class GameData {
         }
         return instance;
     }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
+    }
 }
