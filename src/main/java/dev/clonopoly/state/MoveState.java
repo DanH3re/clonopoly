@@ -24,11 +24,12 @@ public class MoveState extends State {
             board.move(moveBy, currentPlayer);
 
             if (diceOne != diceTwo) {
-                gameLogic.nextPlayer();
+                gameLogic.setState(new DecisionState(gameLogic));
             } else {
-                System.out.println("Doubles! Roll again!");
+                gameLogic.nextTurn(inputType.ROLL_DICE);
             }
-        } else {
+        }
+        else {
             throw new IllegalStateException("Unexpected value: " + input);
         }
     }
