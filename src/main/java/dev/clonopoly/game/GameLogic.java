@@ -44,17 +44,21 @@ public class GameLogic {
     }
     public void nextTurn(inputType Input) {
         currentState.nextGameStep(Input);
+
     }
     public void nextPlayer() {
         this.currentPlayer = players.next();
     }
 
     // Getters and Setters
-
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public CyclicIterator<Player> getPlayersList() {
+    public List<Player> getPlayersList() {
         return players.toList();
+    }
+
+    public void setState(State state) {
+        this.currentState = state;
     }
 }
