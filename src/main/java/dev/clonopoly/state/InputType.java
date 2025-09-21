@@ -1,0 +1,16 @@
+package dev.clonopoly.state;
+
+public enum InputType {
+    ROLL_DICE,
+    BUY_PROPERTY,
+    AUCTION_PROPERTY,
+    END_TURN,
+    TRADE,
+    BUILD_HOUSE,
+    BUILD_HOTEL,
+    MORTGAGE_PROPERTY,
+    UNMORTGAGE_PROPERTY,
+    PAY_BAIL,
+    USE_GET_OUT_OF_JAIL_FREE_CARD,
+    DECLARE_BANKRUPTCY
+}

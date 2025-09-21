@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "description": "Bank error in your favor. Collect $200.",
+    "action": {
+      "type": "collect",
+      "amount": 200
+    }
+  },
+  {
+    "id": 2,
+    "description": "Doctor's fees. Pay $50.",
+    "action": {
+      "type": "pay",
+      "amount": 50
+    }
+  }
+]
