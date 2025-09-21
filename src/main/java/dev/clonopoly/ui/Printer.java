@@ -3,6 +3,8 @@ package dev.clonopoly.ui;
 import dev.clonopoly.board.Board;
 import dev.clonopoly.game.GameLogic;
 import dev.clonopoly.game.Player;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Printer {
@@ -10,35 +12,32 @@ public class Printer {
     static Board board = Board.getInstance();
 
     public static void printBoard() {
-        String[][] boardString = new String[13][13];
+
         List<Player> players = gameLogic.getPlayersList();
 
-        //TODO: improve printing when there are multiple players on the same tile
-        for(int i = 0; i < 13; i++) {
-            for (int j = 0; j < 13; j++) {
-                // corner, nothing printed here
-                if ((i == 0 && j == 0) || (i == 0 && j == 12) || (i == 12 && j == 12) || (i == 12 && j == 0)) {
-                    boardString[i][j] = " ";
-                }
+        for (int i = 0; i < 40; i++) {
+            System.out.printf("[%10s]", board.tileAt(i).toString()); // fixed width for alignment
+        }
+        System.out.println();
 
-                //lateral row/column which will hold information about the player position
-                else if (i == 0 || i == 12 || j == 0 || j == 12) {
-                    boardString[i][j] = "P";
-                }
-                //here I will print the tiles
-                else if (i == 1 || i == 11 || j == 1 || j == 11) {
-                    boardString[i][j] = "T";
-                }
-                //inside of the board, nothing printed here
-                else {
-                    boardString[i][j] = " ";
-                }
-            }
+        List<List<Player>> playersOnTile = new ArrayList<>();
+        for (int i = 0; i < 40; i++) {
+            playersOnTile.add(new ArrayList<>());
+        }
+        for (Player player : players) {
+            playersOnTile.get(player.getPosition()).add(player);
         }
 
-        for(int i = 0; i < 13; i++) {
-            for(int j = 0; j < 13; j++) {
-                System.out.print(boardString[i][j] + " ");
+        int maxStack = playersOnTile.stream().mapToInt(List::size).max().orElse(0);
+
+        // Print players row by row, aligned under tiles
+        for (int row = 0; row < maxStack; row++) {
+            for (int i = 0; i < 40; i++) {
+                if (playersOnTile.get(i).size() > row) {
+                    System.out.printf("[%10s]", playersOnTile.get(i).get(row).getName());
+                } else {
+                    System.out.printf("%12s", ""); // keep spacing
+                }
             }
             System.out.println();
         }

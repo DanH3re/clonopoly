@@ -28,7 +28,7 @@ public class Test {
         boolean gameRunning = true;
         while (gameRunning) {
             System.out.println("\nCurrent player: " + game.getCurrentPlayer().getName());
-            // Printer.printBoard(); function not implemented yet
+            Printer.printBoard();
 
             System.out.print("Enter command (roll/quit/end_turn): ");
             String input = scanner.nextLine().toLowerCase().trim();
