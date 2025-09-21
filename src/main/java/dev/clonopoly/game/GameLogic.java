@@ -12,18 +12,15 @@ import java.util.List;
 
 public class GameLogic {
     private static GameLogic instance;
-    private static Board board;
-    private static GameData gameData;
-    private CyclicIterator<Player> players;
+    private final CyclicIterator<Player> players;
 
     private State currentState;
     private Player currentPlayer;
 
     private GameLogic(Player[] playerArray) {
         this.players = new CyclicIterator<Player>(playerArray);
-        this.board = Board.getInstance();
-        this.gameData = GameData.getInstance();
         this.currentPlayer = players.next();
+        GameData.getInstance().setLogic(this);
     }
 
     public static GameLogic getInstance(Player[] players) {
@@ -57,7 +54,7 @@ public class GameLogic {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-    public CyclicIterator<Player> getPlayers() {
-        return players;
+    public CyclicIterator<Player> getPlayersList() {
+        return players.toList();
     }
 }
