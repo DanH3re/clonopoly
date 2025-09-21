@@ -6,12 +6,12 @@ import dev.clonopoly.game.Player;
 import java.util.List;
 
 public class Printer {
-    GameLogic gameLogic = GameLogic.getInstance();
-    Board board = Board.getInstance();
+    static GameLogic gameLogic = GameLogic.getInstance();
+    static Board board = Board.getInstance();
 
     public static void printBoard() {
         String[][] boardString = new String[13][13];
-        List<Player> players = gameLogic.getPlayers().getAllItems();
+        List<Player> players = gameLogic.getPlayersList();
 
         //TODO: improve printing when there are multiple players on the same tile
         for(int i = 0; i < 13; i++) {
