@@ -6,6 +6,7 @@ public enum inputType {
     AUCTION_PROPERTY,
     END_TURN,
     TRADE,
+    BUILD_MODE,
     BUILD_HOUSE,
     BUILD_HOTEL,
     MORTGAGE_PROPERTY,
