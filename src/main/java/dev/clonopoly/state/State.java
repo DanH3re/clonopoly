@@ -9,7 +9,5 @@ public abstract class State {
         this.gameLogic = gameLogic;
     }
 
-    public abstract void nextGameStep(InputType input);
-
-
+    public abstract void nextGameStep(inputType input);
 }

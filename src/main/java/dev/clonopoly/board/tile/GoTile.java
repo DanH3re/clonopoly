@@ -3,6 +3,11 @@ package dev.clonopoly.board.tile;
 import dev.clonopoly.board.tile.Tile;
 
 public class GoTile extends Tile {
+
+    public GoTile() {
+        // Constructor logic if needed
+    }
+
     @Override
     public void onLand() {
         // Logic for when a player lands on the "Go" tile

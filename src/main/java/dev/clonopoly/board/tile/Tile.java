@@ -20,5 +20,7 @@ public abstract class Tile {
     public int getNoPlayersOnTile() {
         return 0;
     };
+
+    public String toString(){ return "Tile"; };
 }
 

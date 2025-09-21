@@ -8,4 +8,9 @@ public class NoOpTile extends Tile {
         //does nothing when player lands on it
         return;
     }
+
+    @Override
+    public String toString() {
+        return "NOP";
+    }
 }

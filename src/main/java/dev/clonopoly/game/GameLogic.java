@@ -1,31 +1,29 @@
 package dev.clonopoly.game;
 
 import dev.clonopoly.board.Board;
-import dev.clonopoly.card.Deck;
-import dev.clonopoly.state.InputType;
+import dev.clonopoly.datatypes.CyclicIterator;
+import dev.clonopoly.state.inputType;
 import dev.clonopoly.state.MoveState;
 import dev.clonopoly.state.State;
+import dev.clonopoly.ui.Printer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameLogic {
     private static GameLogic instance;
+    private static Board board;
+    private static GameData gameData;
+    private CyclicIterator<Player> players;
 
     private State currentState;
-    private Board board;
-    private Bank bank;
-    private GameRules rules;
-    private Player[] players;
-    private int doublesCount;
-    private Deck communityChest;
-    private Deck chance;
+    private Player currentPlayer;
 
-    private GameLogic(Player[] players) {
-        this.board = new Board();
-        this.bank = new Bank();
-        this.rules = new GameRules();
-        this.players = players;
-        this.doublesCount = 0;
-        this.communityChest = new Deck("community_chest");
-        this.chance = new Deck("chance");
+    private GameLogic(Player[] playerArray) {
+        this.players = new CyclicIterator<Player>(playerArray);
+        this.board = Board.getInstance();
+        this.gameData = GameData.getInstance();
+        this.currentPlayer = players.next();
     }
 
     public static GameLogic getInstance(Player[] players) {
@@ -35,11 +33,31 @@ public class GameLogic {
         return instance;
     }
 
+    public static GameLogic getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("GameLogic not initialized. Call getInstance(Player[]) first.");
+        }
+        return instance;
+    }
+
+    // Game flow methods
+
     public void start() {
         this.currentState = new MoveState(this);
     }
-
-    public void nextTurn(InputType Input) {
+    public void nextTurn(inputType Input) {
         currentState.nextGameStep(Input);
+    }
+    public void nextPlayer() {
+        this.currentPlayer = players.next();
+    }
+
+    // Getters and Setters
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+    public CyclicIterator<Player> getPlayers() {
+        return players;
     }
 }

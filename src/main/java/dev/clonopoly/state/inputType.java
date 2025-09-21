@@ -1,6 +1,6 @@
 package dev.clonopoly.state;
 
-public enum InputType {
+public enum inputType {
     ROLL_DICE,
     BUY_PROPERTY,
     AUCTION_PROPERTY,
