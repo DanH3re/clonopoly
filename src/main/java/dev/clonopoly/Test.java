@@ -4,6 +4,7 @@ import dev.clonopoly.board.Board;
 import dev.clonopoly.game.GameLogic;
 import dev.clonopoly.game.Player;
 import dev.clonopoly.state.inputType;
+import dev.clonopoly.ui.GameWindow;
 import dev.clonopoly.ui.Printer;
 
 import java.util.Scanner;
@@ -24,6 +25,8 @@ public class Test {
         game.start();
 
         System.out.println("Game started!");
+
+        GameWindow window = new GameWindow();
 
         boolean gameRunning = true;
         while (gameRunning) {
