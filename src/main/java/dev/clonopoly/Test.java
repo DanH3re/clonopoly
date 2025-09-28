@@ -5,7 +5,6 @@ import dev.clonopoly.game.GameLogic;
 import dev.clonopoly.game.Player;
 import dev.clonopoly.state.inputType;
 import dev.clonopoly.ui.GameWindow;
-import dev.clonopoly.ui.Printer;
 
 import java.util.Scanner;
 
@@ -27,11 +26,11 @@ public class Test {
         System.out.println("Game started!");
 
         GameWindow window = new GameWindow();
+        window.showWIndow();
 
         boolean gameRunning = true;
         while (gameRunning) {
             System.out.println("\nCurrent player: " + game.getCurrentPlayer().getName());
-            Printer.printBoard();
 
             System.out.print("Enter command (roll/quit/end_turn): ");
             String input = scanner.nextLine().toLowerCase().trim();
