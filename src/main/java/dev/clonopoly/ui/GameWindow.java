@@ -52,7 +52,7 @@ public class GameWindow {
         windowFrame.add(boardPanel);
     }
 
-    public void showWIndow() {
+    public void showWindow() {
         windowFrame.setVisible(true);
     }
 

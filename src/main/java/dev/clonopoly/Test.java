@@ -26,7 +26,7 @@ public class Test {
         System.out.println("Game started!");
 
         GameWindow window = new GameWindow();
-        window.showWIndow();
+        window.showWindow();
 
         boolean gameRunning = true;
         while (gameRunning) {
