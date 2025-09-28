@@ -1,7 +1,5 @@
 package dev.clonopoly.board.tile;
 
-import dev.clonopoly.board.tile.Tile;
-
 public class GoTile extends Tile {
 
     public GoTile() {
@@ -15,5 +13,10 @@ public class GoTile extends Tile {
         System.out.println("Player landed on Go! Collect $200.");
         // player.addMoney(200); // Assuming there's a method to add money to the player
         return;
+    }
+
+    @Override
+    public String toString() {
+        return "Go";
     }
 }

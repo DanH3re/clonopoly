@@ -1,5 +1,14 @@
 package dev.clonopoly.board.tile;
 
-class OwnableTile extends Tile {
+public interface OwnableTile extends Tile {
+    // Mutable properties
+    int id;
+    String owner;
+    int price;
+    boolean isMortgaged;
 
+    // Immutable properties
+    String name;
+    int cost;
+    int[] rent;
 }

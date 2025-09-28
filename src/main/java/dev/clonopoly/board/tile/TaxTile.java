@@ -1,7 +1,5 @@
 package dev.clonopoly.board.tile;
 
-import dev.clonopoly.board.tile.Tile;
-
 public class TaxTile extends Tile {
     private final int taxAmount;
 
@@ -20,5 +18,10 @@ public class TaxTile extends Tile {
         System.out.println("Player landed on a Tax Tile! Pay $" + taxAmount + ".");
         // player.deductMoney(taxAmount); // Assuming there's a method to deduct money from the player
         return;
+    }
+
+    @Override
+    public String toString() {
+        return "Tax" + taxAmount;
     }
 }
