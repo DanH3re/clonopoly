@@ -1,6 +1,6 @@
 package dev.clonopoly.board.tile;
 
-public enum cardType {
+public enum CardType {
     CHANCE,
     COMMUNITY_CHEST
 }

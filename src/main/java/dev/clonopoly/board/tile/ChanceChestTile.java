@@ -1,14 +1,14 @@
 package dev.clonopoly.board.tile;
 
 public class ChanceChestTile extends Tile {
-    private final cardType cardType;
+    private final CardType cardType;
 
-    public ChanceChestTile(cardType cardType) {
+    public ChanceChestTile(CardType cardType) {
         this.cardType = cardType;
     }
 
 
-    public cardType getCardType() {
+    public CardType getCardType() {
         return cardType;
     }
 
@@ -19,6 +19,6 @@ public class ChanceChestTile extends Tile {
 
     @Override
     public String toString() {
-        return cardType + "Tile";
+        return cardType.toString();
     }
 }
