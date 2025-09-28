@@ -41,8 +41,8 @@ public class GameLogic {
     }
     public void nextTurn(inputType Input) {
         currentState.nextGameStep(Input);
-
     }
+    
     public void nextPlayer() {
         this.currentPlayer = players.next();
     }

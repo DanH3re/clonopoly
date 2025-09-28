@@ -25,6 +25,8 @@ public class DecisionState extends State {
                 gameLogic.setState(new MoveState(gameLogic));
                 break;
 
+           default:
+               throw new IllegalStateException("Unexpected value: " + input);
        }
     }
 }
