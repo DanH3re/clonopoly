@@ -1,6 +1,6 @@
 package dev.clonopoly.board.tile;
 
-public interface OwnableTile extends Tile {
+public abstract class OwnableTile extends Tile {
     // Mutable properties
     int id;
     String owner;

@@ -1,6 +1,6 @@
 package dev.clonopoly.board.tile;
 
-public class RailroadTile extends Tile implements OwnableTile {
+public class RailroadTile extends OwnableTile {
     String name;
 
     @Override

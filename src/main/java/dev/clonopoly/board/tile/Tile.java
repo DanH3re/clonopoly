@@ -1,6 +1,6 @@
 package dev.clonopoly.board.tile;
 
-public abstract class Tile {
+public class Tile {
     private int id;
     private int position;
 

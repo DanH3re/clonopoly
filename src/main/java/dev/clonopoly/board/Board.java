@@ -1,7 +1,6 @@
 package dev.clonopoly.board;
 
-import dev.clonopoly.board.tile.NoOpTile;
-import dev.clonopoly.board.tile.Tile;
+import dev.clonopoly.board.tile.*;
 import dev.clonopoly.board.tile.NoOpTile;
 import dev.clonopoly.game.GameLogic;
 import dev.clonopoly.game.Player;
@@ -13,13 +12,19 @@ public class Board {
     private static Board instance = null;
 
     private Board() {
-        this.tiles = new Tile[40];
-        this.size = 40;
+        this.tiles = new Tile[36];
+        this.size = 36;
 
-        //TODO: initialize the tiles with actual game tiles
         for(int i = 0; i < size; i++) {
             tiles[i] = new NoOpTile();
         }
+
+        tiles[0] = new GoTile();
+        tiles[9] = new JailTile();
+        tiles[18] = new NoOpTile();
+        tiles[27] = new GoToJailTile();
+
+        //TODO: initialize the tiles with actual game tiles
     }
 
     public static Board getInstance() {
