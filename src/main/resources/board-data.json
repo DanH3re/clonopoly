@@ -1,0 +1,36 @@
+{
+  "size": 36,
+  "tiles": [
+    {
+      "id": 0,
+      "position": 0,
+      "type": "go",
+      "name": "Go"
+    },
+    {
+      "id": 1,
+      "position": 1,
+      "type": "street",
+      "name": "Mediterranean Avenue",
+      "cost": 60,
+      "rent": [2, 10, 30, 90, 160, 250],
+      "colorGroup": "brown",
+      "houseCost": 50,
+      "hotelCost": 50
+    },
+    {
+      "id": 4,
+      "position": 4,
+      "type": "tax",
+      "name": "Income Tax",
+      "taxAmount": 200
+    },
+    {
+      "id": 7,
+      "position": 7,
+      "type": "chance",
+      "name": "Chance",
+      "cardType": "chance"
+    }
+  ]
+}
