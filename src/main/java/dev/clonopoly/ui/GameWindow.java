@@ -20,10 +20,11 @@ public class GameWindow {
     private JPanel initializeBoard() {
         JPanel boardPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        int size = board.getSize() / 4 + 1;
 
-        for (int row = 0; row < 10; row++) {
-            for (int col = 0; col < 10; col++) {
-                if(row == 0 || row == 9 || col == 0 || col == 9) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if(row == 0 || row == size - 1 || col == 0 || col == size - 1) {
                     JPanel tile = new JPanel();
                     tile.setBackground(Color.WHITE);
                     tile.setBorder(BorderFactory.createLineBorder(Color.black));
