@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Monopoly Board Schema",
+  "type": "object",
+  "properties": {
+    "size": {
+      "type": "integer",
+      "description": "Total number of tiles on the board",
+      "default": 36
+    },
+    "tiles": {
+      "type": "array",
+      "description": "Array of tiles on the board",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique tile identifier"
+          },
+          "position": {
+            "type": "integer",
+            "description": "Position on the board (0-35)"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["go", "street", "railroad", "utility", "tax", "chance", "communityChest", "jail", "goToJail", "freeParking", "noOp"]
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the tile"
+          },
+          "cost": {
+            "type": "integer",
+            "description": "Purchase cost for ownable tiles",
+            "minimum": 0
+          },
+          "rent": {
+            "type": "array",
+            "description": "Rent amounts [base, 1house, 2house, 3house, 4house, hotel]",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maxItems": 6
+          },
+          "colorGroup": {
+            "type": "string",
+            "description": "Color group for street tiles",
+            "enum": ["brown", "lightBlue", "pink", "orange", "red", "yellow", "green", "darkBlue"]
+          },
+          "houseCost": {
+            "type": "integer",
+            "description": "Cost to build a house",
+            "minimum": 0
+          },
+          "hotelCost": {
+            "type": "integer",
+            "description": "Cost to build a hotel",
+            "minimum": 0
+          },
+          "taxAmount": {
+            "type": "integer",
+            "description": "Tax amount for tax tiles",
+            "minimum": 0
+          },
+          "cardType": {
+            "type": "string",
+            "description": "Type of card tile",
+            "enum": ["chance", "communityChest"]
+          }
+        },
+        "required": ["id", "position", "type", "name"],
+        "allOf": [
+          {
+            "if": {
+              "properties": { "type": { "const": "street" } }
+            },
+            "then": {
+              "required": ["cost", "rent", "colorGroup", "houseCost", "hotelCost"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "type": { "enum": ["railroad", "utility"] } }
+            },
+            "then": {
+              "required": ["cost", "rent"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "type": { "const": "tax" } }
+            },
+            "then": {
+              "required": ["taxAmount"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "type": { "enum": ["chance", "communityChest"] } }
+            },
+            "then": {
+              "required": ["cardType"]
+            }
+          }
+        ]
+      },
+      "minItems": 36,
+      "maxItems": 36
+    }
+  },
+  "required": ["size", "tiles"]
+}
