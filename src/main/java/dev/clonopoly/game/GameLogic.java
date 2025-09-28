@@ -1,13 +1,10 @@
 package dev.clonopoly.game;
 
-import dev.clonopoly.board.Board;
 import dev.clonopoly.datatypes.CyclicIterator;
 import dev.clonopoly.state.inputType;
 import dev.clonopoly.state.MoveState;
 import dev.clonopoly.state.State;
-import dev.clonopoly.ui.Printer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameLogic {

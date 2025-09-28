@@ -18,7 +18,6 @@ public class MoveState extends State {
             int diceTwo = (int) (Math.random() * 6) + 1;
 
             int moveBy = diceOne + diceTwo;
-            System.out.println("You rolled a " + diceOne + " and a " + diceTwo + " for a total of " + moveBy);
             Board board = Board.getInstance();
             Player currentPlayer = gameLogic.getCurrentPlayer();
             board.move(moveBy, currentPlayer);

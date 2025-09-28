@@ -29,8 +29,9 @@ public class Board {
         return instance;
     }
 
-    public Tile tileAt(int pos) {
-        return tiles[pos];
+    public Tile tileAt(int row, int col) {
+        // TODO: Implement me
+        return tiles[0];
     }
 
     public Tile nearestAfter(int from, Tile target) {
