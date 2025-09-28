@@ -30,8 +30,21 @@ public class Board {
     }
 
     public Tile tileAt(int row, int col) {
-        // TODO: Implement me
-        return tiles[0];
+        int tileNo;
+
+        if (row == 9) {
+            tileNo = 9 - col;
+        } else if (col == 0) {
+            tileNo = 9 + (9 - row);
+        } else if (row == 0) {
+            tileNo = 18 + col;
+        } else if (col == 9) {
+            tileNo = 27 + row;
+        } else {
+            tileNo = -1;
+        }
+
+        return tiles[tileNo];
     }
 
     public Tile nearestAfter(int from, Tile target) {
