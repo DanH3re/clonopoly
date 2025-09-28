@@ -2,9 +2,7 @@ package dev.clonopoly.board;
 
 import dev.clonopoly.board.tile.*;
 import dev.clonopoly.board.tile.NoOpTile;
-import dev.clonopoly.game.GameLogic;
 import dev.clonopoly.game.Player;
-import java.util.List;
 
 public class Board {
     private final Tile[] tiles;
@@ -15,11 +13,12 @@ public class Board {
         this.tiles = new Tile[40];
         this.size = 40;
 
-        tiles[0] = new GoTile();
-        tiles[10] = new JailTile();
-        tiles[20] = new NoOpTile();
-        tiles[30] = new GoToJailTile();
-        //TODO: initialize the tiles with actual game tiles
+        for (int i = 0; i < size; i++) {
+            tiles[i] = new NoOpTile("N/A");
+        }
+
+        instance = this;
+        JSONLoader.getInstance().loadBoard("src/main/resources/board-data.json");
     }
 
     public static Board getInstance() {
@@ -56,6 +55,13 @@ public class Board {
 
     public void goTo(int pos, Player player) {
         // TODO: moves the player to the specified position
+    }
+
+    public void addTile(Tile tile, int position) {
+        if (position < 0 || position >= size) {
+            throw new IllegalArgumentException("Position out of bounds");
+        }
+        tiles[position] = tile;
     }
 
     public int getSize() {

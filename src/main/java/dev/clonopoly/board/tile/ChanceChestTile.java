@@ -7,6 +7,7 @@ public class ChanceChestTile extends Tile {
         this.cardType = cardType;
     }
 
+
     public cardType getCardType() {
         return cardType;
     }

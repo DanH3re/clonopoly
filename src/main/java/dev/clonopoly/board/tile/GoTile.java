@@ -1,9 +1,8 @@
 package dev.clonopoly.board.tile;
 
 public class GoTile extends Tile {
-
-    public GoTile() {
-        // Constructor logic if needed
+    public GoTile(String name) {
+        this.name = name;
     }
 
     @Override

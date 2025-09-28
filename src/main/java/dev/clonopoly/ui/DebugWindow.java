@@ -4,13 +4,13 @@ import dev.clonopoly.board.Board;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameWindow {
+public class DebugWindow {
     Board board = Board.getInstance();
     JFrame windowFrame = new JFrame();
 
     private JFrame initializeFrame() {
         windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        windowFrame.setSize(800,720);
+        windowFrame.setSize(1920,1080);
         windowFrame.setTitle("Clonopoly");
         windowFrame.setLocationRelativeTo(null);
         windowFrame.setVisible(true);
@@ -34,7 +34,9 @@ public class GameWindow {
                     gridBagConstraints.weightx = 1.0;
                     gridBagConstraints.weighty = 1.0;
 
-                    JLabel label = new JLabel(board.tileAt(row, col).toString());
+                    String tileName= board.tileAt(row, col).toString();
+                    JLabel label = new JLabel(tileName);
+
                     tile.add(label);
                     boardPanel.add(tile, gridBagConstraints);
                 }
@@ -47,7 +49,7 @@ public class GameWindow {
         return boardPanel;
     }
 
-    public GameWindow() {
+    public DebugWindow() {
         JFrame windowFrame = initializeFrame();
         JPanel boardPanel = initializeBoard();
         windowFrame.add(boardPanel);

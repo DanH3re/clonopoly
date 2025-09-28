@@ -1,10 +1,10 @@
 package dev.clonopoly.board.tile;
 
 public class GoToJailTile extends Tile {
-
-    public GoToJailTile() {
-        // Constructor logic if needed
+    public GoToJailTile(String name) {
+        this.name = name;
     }
+
 
     @Override
     public void onLand() {
@@ -15,8 +15,4 @@ public class GoToJailTile extends Tile {
         return;
     }
 
-    @Override
-    public String toString() {
-        return "GoToJail";
-    }
 }

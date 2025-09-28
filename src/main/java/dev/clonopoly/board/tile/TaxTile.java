@@ -3,8 +3,15 @@ package dev.clonopoly.board.tile;
 public class TaxTile extends Tile {
     private final int taxAmount;
 
-    public TaxTile(int taxAmount) {
-        this.taxAmount = taxAmount;
+    public TaxTile(String name) {
+        this.name = name;
+        if (name.equals("Income Tax")) {
+            this.taxAmount = 200;
+        } else if (name.equals("Luxury Tax")) {
+            this.taxAmount = 100;
+        } else {
+            throw new IllegalArgumentException("Invalid tax tile name");
+        }
     }
 
     public int getTaxAmount() {

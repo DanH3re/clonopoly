@@ -1,7 +1,10 @@
 package dev.clonopoly.board.tile;
 
 public class RailroadTile extends OwnableTile {
-    String name;
+    public RailroadTile(String name) {
+        this.name = name;
+    }
+
 
     @Override
     public void onLand() {

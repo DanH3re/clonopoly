@@ -1,8 +1,13 @@
 package dev.clonopoly.board.tile;
 
-public class Tile {
+public abstract class Tile {
     private int id;
+    protected String name;
     private int position;
+
+    public Tile() {
+        this.name = "Unknown Tile";
+    }
 
     public void onLand() {
         
@@ -20,6 +25,6 @@ public class Tile {
         return 0;
     };
 
-    public String toString(){ return "Tile"; };
+    public String toString(){ return name; };
 }
 

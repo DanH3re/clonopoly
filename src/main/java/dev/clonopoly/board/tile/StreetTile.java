@@ -1,8 +1,6 @@
 package dev.clonopoly.board.tile;
 
 public class StreetTile extends OwnableTile implements BuildableTile {
-    String name;
-
     public StreetTile(String name) {
         this.name = name;
     }
