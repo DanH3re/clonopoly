@@ -18,16 +18,15 @@ public class GameWindow {
     }
 
     private JPanel initializeBoard() {
-        JPanel boardPanel = new JPanel(null);
-        GridBagLayout gridBagLayout = new GridBagLayout();
+        JPanel boardPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
         for (int row = 0; row < 10; row++) {
             for (int col = 0; col < 10; col++) {
                 if(row == 0 || row == 9 || col == 0 || col == 9) {
-                    JPanel panel = new JPanel();
-                    panel.setBackground(Color.WHITE);
-                    panel.setBorder(BorderFactory.createLineBorder(Color.black));
+                    JPanel tile = new JPanel();
+                    tile.setBackground(Color.WHITE);
+                    tile.setBorder(BorderFactory.createLineBorder(Color.black));
                     gridBagConstraints.gridx = col;
                     gridBagConstraints.gridy = row;
                     gridBagConstraints.fill = GridBagConstraints.BOTH;
@@ -35,14 +34,13 @@ public class GameWindow {
                     gridBagConstraints.weighty = 1.0;
 
                     JLabel label = new JLabel(board.tileAt(row, col).toString());
-                    panel.add(label);
-                    boardPanel.add(panel, gridBagConstraints);
+                    tile.add(label);
+                    boardPanel.add(tile, gridBagConstraints);
                 }
             }
         }
 
         boardPanel.setBackground(Color.WHITE);
-        boardPanel.setLayout(gridBagLayout);
         boardPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
         return boardPanel;
