@@ -4,6 +4,7 @@ import dev.clonopoly.datatypes.CyclicIterator;
 import dev.clonopoly.state.inputType;
 import dev.clonopoly.state.MoveState;
 import dev.clonopoly.state.State;
+import dev.clonopoly.utils.Logger;
 
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class GameLogic {
 
     private State currentState;
     private Player currentPlayer;
+
+    Logger logger = Logger.getInstance();
 
     private GameLogic(Player[] playerArray) {
         this.players = new CyclicIterator<Player>(playerArray);
@@ -38,6 +41,7 @@ public class GameLogic {
 
     public void start() {
         this.currentState = new MoveState(this);
+        logger.logInfo("It's now " + currentPlayer.getName() + "'s turn.");
     }
     public void nextTurn(inputType Input) {
         currentState.nextGameStep(Input);
@@ -45,6 +49,7 @@ public class GameLogic {
     
     public void nextPlayer() {
         this.currentPlayer = players.next();
+        logger.logInfo("It's now " + currentPlayer.getName() + "'s turn.");
     }
 
     // Getters and Setters

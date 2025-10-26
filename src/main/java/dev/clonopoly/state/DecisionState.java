@@ -1,13 +1,27 @@
 package dev.clonopoly.state;
 
 import dev.clonopoly.game.GameLogic;
+import dev.clonopoly.utils.Logger;
 
 public class DecisionState extends State {
-    public DecisionState(GameLogic gameLogic) {super(gameLogic);}
+    private final boolean canMove;
+    private final Logger logger = Logger.getInstance();
+
+    public DecisionState(GameLogic gameLogic, boolean canMove) {
+        super(gameLogic);
+        this.canMove = canMove;
+    }
 
     @Override
     public void nextGameStep(inputType input) {
        switch (input) {
+           case ROLL_DICE:
+                if(canMove) {
+                    gameLogic.setState(new MoveState(gameLogic));
+                } else {
+                    logger.logError("Player cannot roll dice again.");
+                }
+
            case BUY_PROPERTY:
                 // TODO: implement buy property state
                 break;
