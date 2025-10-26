@@ -18,6 +18,7 @@ public class DecisionState extends State {
            case ROLL_DICE:
                 if(canMove) {
                     gameLogic.setState(new MoveState(gameLogic));
+                    gameLogic.nextTurn(inputType.ROLL_DICE);
                 } else {
                     logger.logError("Player cannot roll dice again.");
                 }
