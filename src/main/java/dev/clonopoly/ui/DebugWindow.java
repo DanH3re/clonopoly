@@ -1,12 +1,17 @@
 package dev.clonopoly.ui;
 import dev.clonopoly.board.Board;
+import dev.clonopoly.game.GameLogic;
+import dev.clonopoly.game.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class DebugWindow {
     Board board = Board.getInstance();
     JFrame windowFrame = new JFrame();
+    GameLogic game = GameLogic.getInstance();
+    List<Player> players = game.getPlayersList();
 
     private JFrame initializeFrame() {
         windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,9 +55,25 @@ public class DebugWindow {
     }
 
     public DebugWindow() {
-        JFrame windowFrame = initializeFrame();
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(800, 600));
+
         JPanel boardPanel = initializeBoard();
-        windowFrame.add(boardPanel);
+        boardPanel.setBounds(0, 0, 800, 600);
+
+        PlayerToken p1 = new PlayerToken(players.get(0));
+        p1.setBounds(100, 100, 20, 20);
+
+        PlayerToken p2 = new PlayerToken(players.get(1));
+        p2.setBounds(150, 150, 20, 20);
+
+        layeredPane.add(boardPanel, Integer.valueOf(0)); // background
+        layeredPane.add(p1, Integer.valueOf(1));         // on top
+        layeredPane.add(p2, Integer.valueOf(1));         // on top
+
+        windowFrame.add(layeredPane);
+        windowFrame.pack();
+        windowFrame.setVisible(true);
     }
 
     public void showWindow() {
