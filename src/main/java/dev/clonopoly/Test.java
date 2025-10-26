@@ -25,7 +25,7 @@ public class Test {
 
         System.out.println("Game started!");
 
-        DebugWindow window = new DebugWindow();
+        DebugWindow window = DebugWindow.getInstance();
         window.showWindow();
 
 //        // Main game loop

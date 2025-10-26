@@ -12,6 +12,14 @@ public class DebugWindow {
     JFrame windowFrame = new JFrame();
     GameLogic game = GameLogic.getInstance();
     List<Player> players = game.getPlayersList();
+    private DebugWindow instance = null;
+
+    public getInstance() {
+        if (instance == null) {
+            instance = new DebugWindow();
+        }
+        return instance;
+    }
 
     private JFrame initializeFrame() {
         windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +62,43 @@ public class DebugWindow {
         return boardPanel;
     }
 
-    public DebugWindow() {
+    private Point getTilePosition(int tileIndex) {
+        int size = board.getSize() / 4 + 1;
+        int MAX_ROW = board.getSize() / 4;
+        int row, col;
+
+        // Calculate row/col from tile index (reverse of tileAt logic)
+        if (tileIndex <= MAX_ROW) {
+            row = MAX_ROW;
+            col = MAX_ROW - tileIndex;
+        } else if (tileIndex <= MAX_ROW * 2) {
+            row = MAX_ROW - (tileIndex - MAX_ROW);
+            col = 0;
+        } else if (tileIndex <= MAX_ROW * 3) {
+            row = 0;
+            col = tileIndex - (MAX_ROW * 2);
+        } else {
+            row = tileIndex - (MAX_ROW * 3);
+            col = MAX_ROW;
+        }
+
+        // Calculate pixel position based on board panel size
+        int tileWidth = 800 / size;
+        int tileHeight = 600 / size;
+
+        // Center token in tile, offset by token size/2
+        return new Point(col * tileWidth + tileWidth/2 - 10,
+                row * tileHeight + tileHeight/2 - 10);
+    }
+
+    public void updateTokenPosition(PlayerToken token) {
+        int position = token.getPlayer().getPosition();
+        Point pos = getTilePosition(position);
+        token.setBounds(pos.x, pos.y, 20, 20);
+        token.repaint();
+    }
+
+    private DebugWindow() {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 600));
 
@@ -62,10 +106,10 @@ public class DebugWindow {
         boardPanel.setBounds(0, 0, 800, 600);
 
         PlayerToken p1 = new PlayerToken(players.get(0));
-        p1.setBounds(100, 100, 20, 20);
+        updateTokenPosition(p1);
 
         PlayerToken p2 = new PlayerToken(players.get(1));
-        p2.setBounds(150, 150, 20, 20);
+        updateTokenPosition(p2);
 
         layeredPane.add(boardPanel, Integer.valueOf(0)); // background
         layeredPane.add(p1, Integer.valueOf(1));         // on top
