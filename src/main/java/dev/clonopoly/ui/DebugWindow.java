@@ -14,7 +14,7 @@ public class DebugWindow {
     List<Player> players = game.getPlayersList();
     private DebugWindow instance = null;
 
-    public getInstance() {
+    public static DebugWindow getInstance() {
         if (instance == null) {
             instance = new DebugWindow();
         }
